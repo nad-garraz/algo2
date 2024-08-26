@@ -1,0 +1,96 @@
+\begin{enunciado}{\ejercicio}
+  Sean $P(x:\enteros)$ y $Q(x: \enteros)$ dos predicados que nunca se indefinen. Escribir al predicado asociado
+  a cada uno de los siguientes enunciados:
+  \begin{enumerate}[label=\tiny\faIcon{yin-yang}$_{\arabic*}$]
+    \item \textit{"Existe un único natural menor a 10 que cumple P"}
+    \item \textit{"Existen al menos dos números naturales menores a 10 que cumplen P"}
+    \item \textit{"Existen exactamente dos números naturales menores a 10 que cumplen P"}
+    \item \textit{"Todos los enteros pares que cumplen P, no cumplen Q"}
+    \item \textit{"Si un entero cumple P y es impar, no cumple Q"}
+    \item \textit{"Todos los enteros pares cumplen P, y todos los enteros impares que no cumplen P cumplen Q"}
+    \item \textit{"Si hay un número natural menor a 10 que no cumple P entonces ninfuno natural menor a 10 cumple Q; y si todos los
+            naturales menores a 10 cump,en P entonces hay al menos dos naturales menores a 10 que cumplen Q"}
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\tiny\faIcon{yin-yang}$_{\arabic*}$]
+  \item \textit{"Existe un único natural menor a 10 que cumple P"}\par
+        $$
+          (\existe n : \enteros)
+          \biggl(
+          \bigl(
+          0 \leq n < 10 \land P(n)
+          \bigr)
+          \land
+          (\paratodo m : \enteros) \bigl(0 \leq m < 10  \entonces (m = n \entonces P(m))  \bigr) \biggr)
+        $$
+
+  \item \textit{"Existen al menos dos números naturales menores a 10 que cumplen P"}
+
+        $$
+          [\existe n: \enteros]
+          \ob{
+            \ub{\bigl[ 0 \leq n < 10 \land P(n) \bigr]}{f_1(n)}
+            \land
+            [\existe m: \enteros]
+            \ub{\bigl[ 0 \leq m < 10 \land P(m) \land m \distinto n \bigr]}{f_2(n,m)}
+          }{f_3}
+        $$
+        \begin{enumerate}[label=\tiny\faIcon{meh-rolling-eyes}]
+          \item El \textit{cuantificador existencial} me generaliza la disyunción:
+                $$
+                  \dots
+                  \lor f_1(-N)
+                  \lor f_1(-N+1)
+                  \lor\dots
+                  \lor \blue{f_1(0)}
+                  \lor\dots
+                  \lor \blue{f_1(9)}
+                  \lor\dots
+                  \lor f_1(N-1)
+                  \lor f_1(N)
+                  \lor\dots
+                $$
+                Los \blue{$f_1(n)$ azules,} tienen valores de \verdadero, para la primera condición de $f_1$, los demás son falsos.
+                Como tengo concatenación de disyunciones, con que una de las \blue{azules} cumpla también $P(n)$, listo tengo un $f_1$
+                \verdadero para algún $n$.
+                $$
+                  \blue{f_1(0)}
+                  \lor\dots
+                  \lor \blue{f_1(9)}
+                $$
+                Esos valores son los que me sirven para calcular los valores de verdad que hay en $f_1 \land f_2$.
+
+          \item Muy parecido ahora con $f_2$
+                $$
+                  \dots
+                  \lor f_2(-N, \blue{n})
+                  \lor f_2(-N+1, \blue{n})
+                  \lor\dots
+                  \lor \purple{f_2(0, \blue{n})}
+                  \lor\dots
+                  \lor \purple{f_2(9, \blue{n})}
+                  \lor\dots
+                  \lor f_2(N-1, \blue{n})
+                  \lor f_2(N, \blue{n})
+                  \lor\dots
+                $$
+                Nuevamente alguno de los \purple{$m$}, van a cumplir las condiciones \purple{$f_1(m,n)$}
+
+          \item Por lo tanto obtengo siempre valores verdaderos en la expresión final $f_3$.
+        \end{enumerate}
+
+  \item \textit{"Existen exactamente dos números naturales menores a 10 que cumplen P"}
+
+  \item \textit{"Todos los enteros pares que cumplen P, no cumplen Q"}
+
+  \item \textit{"Si un entero cumple P y es impar, no cumple Q"}
+        $$
+          (\paratodo n: \enteros)\bigr( (P(n) \land n \mod 2 \distinto 0 ) \entonces \neg Q(n) \bigr)
+        $$
+
+  \item \textit{"Todos los enteros pares cumplen P, y todos los enteros impares que no cumplen P cumplen Q"}
+
+  \item \textit{"Si hay un número natural menor a 10 que no cumple P entonces ninfuno natural menor a 10 cumple Q; y si todos los
+          naturales menores a 10 cump,en P entonces hay al menos dos naturales menores a 10 que cumplen Q"}
+\end{enumerate}

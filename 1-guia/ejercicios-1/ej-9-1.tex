@@ -1,0 +1,92 @@
+\begin{enunciado}{\ejercicio}
+  Sea $P(x: \enteros)$ y $Q(x: \enteros)$ dos predicados cualquiera. Explicar cuál es el error de traducción a
+  fórmulas de los siguientes enunciados. Dar un ejemplo en el cuál sucede el problema y luego corregirlo.
+  \begin{enumerate}[label=\alph*)]
+    \item "\textit{Todos los naturales menores a 10 cumplen P}":
+          $$
+            (\paratodo i : \enteros)((0 \leq i < 10) \land P(i))
+          $$
+
+    \item "\textit{Algún natural menor a 10 cumple P}":
+          $$
+            (\existe i : \enteros)((0 \leq i < 10) \entonces P(i))
+          $$
+
+    \item "\textit{Todos los naturales menores a 10 que cumplen P y Q}":
+          $$
+            (\paratodo x : \enteros)((0 \leq x < 10) \entonces (P(x) \land Q(x)))
+          $$
+
+    \item "\textit{No hay ningún natural menor a 10 que cumpla $P$ y $Q$}":
+          $$
+            (\paratodo x : \enteros)((0 \leq x < 10) \entonces (P(x) \land Q(x)))
+          $$
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item "\textit{Todos los naturales menores a 10 cumplen P}":
+        $$
+          (\paratodo i : \enteros)\ub{(\ob{(0 \leq i < 10)}{f(i)} \land P(i))}{R(i)} \sii (\paratodo i : \enteros)(R(i))
+        $$
+        Como el cuantificador $\red{\paratodo}$ generaliza la conjunción. Suponiendo que $P(i)$ \red{no se indefine}:
+        $$
+          (\paratodo i : \enteros)(R(i))
+          \sii
+          R(-N) \land R(-N+1)
+          \land \dots \land
+          \blue{R(0)}
+          \land \blue{\dots} \land
+          \blue{R(9)} \land
+          R(10)
+          \land \dots \land
+          R(N)
+        $$
+        Obtengo un resultado donde sé que los $\blue{R(0)},\blue{\dots}, \blue{R(9)}$ van a tener un valor \verdadero, pero el resto de los $R(i)$ van a tener
+        un valor de \falso, ya que no cumplen $f(i)$.\par
+        Por lo tanto busco una solución para que esos $R(i)$ no sean moscas en mi sopa, con "\red{$\entonces$}" dado que:
+        $$
+          \ub{\falso \entonces \text{\marron{\faIcon{poo}}}}{\verdadero \text{ \faIcon{glass-cheers}}}
+        $$
+
+        Entonces cambio ese $\land$ por un $\entonces_L$, donde me aseguro de lidiar con potenciales
+        indefiniciones de $P(i)$ que harían que todo explote:
+        $$
+          (\paratodo i : \enteros)\ub{(\ob{(0 \leq i < 10)}{f(i)} \entoncesL P(i))}{S(i)} \sii (\paratodo i : \enteros)(S(i))
+        $$
+        Ahora la situación es más feliz:
+        $$
+          (\paratodo i : \enteros)(S(i))
+          \sii
+          S(-N) \land S(-N+1)
+          \land \dots \land
+          \blue{S(0)}
+          \land \blue{\dots} \land
+          \blue{S(9)} \land
+          S(10)
+          \land \dots \land
+          S(N)
+        $$
+        Todos los $\blue{S(i)}$ son verdaderos y no se indefinen por el $\red{\entoncesL}$
+
+  \item "\textit{Algún natural menor a 10 cumple P}":
+        $$
+          (\existe i : \enteros)((0 \leq i < 10) \entonces P(i))
+        $$
+
+  \item "\textit{Todos los naturales menores a 10 que cumplen P y Q}":
+        $$
+          (\paratodo x : \enteros)((0 \leq x < 10) \entonces (P(x) \land Q(x)))
+        $$
+
+  \item "\textit{No hay ningún natural menor a 10 que cumpla $P$ y $Q$}":
+        $$
+          (\paratodo x : \enteros)((0 \leq x < 10) \entonces (P(x) \land Q(x)))
+        $$
+        Propongo
+        $$
+          (\paratodo x : \enteros)\bigl((\ub{0 \leq x < 10}{f(x)}) \red{\entoncesL} \ub{
+          \red{\neg}(P(x) \red{\andL} Q(x))} {g(x)}\bigr)
+        $$
+        Con el $\entoncesL$ mato los casos que no cumplen $f(x)$. Luego $g(x)$ solo toma valor \falso cuando $P(x)$ y $Q(x)$ son ambas \verdadero.
+\end{enumerate}

@@ -1,0 +1,32 @@
+\begin{enunciado}{\ejercicio}
+  Asumiendo que el valor de $b$ y $c$ es verdadero, el de $a$ es $falso$ y el de $x$ e $y$ es indefinido, indicar cuáles de los operadores
+  deben ser operadores "luego" para que la expresión no se indefina nunca:\par
+  \begin{enumerate}[label=\alph*)]
+    \item $(\neg x \lor b)$
+    \item $((c \lor (y \land a)) \lor b)$
+    \item
+    \item
+    \item
+    \item $(((c \lor y) \land (a \lor b)) \sii (c \lor (y \land a) \lor b))$
+    \item
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item $(\neg x \lor b)$.\par
+        Tengo que evaluar de \textit{izquierda a derecha} y se cortocircuita si el resultado de la fórmula es independiente de lo que resta leer.
+        Cuando hay un disyunción con tener $x = F$, de manera que $\neg x = T$ ya puedo parar de evaluar. Pero si $x$ está indefinida, no hay nada que
+        peuda hacer.
+
+  \item $((c \lor (y \land a)) \lor b)$
+  \item
+  \item
+  \item
+  \item
+        Para que la disyunción seguro no se indefina, necesito que el primer predicado sea \textit{verdadero} y la conjunción eso sucede si el primer predicado
+        es \textit{falso}.
+        $$
+          ((\ub{(c \lor y)}{c \to T.\text{ No se indefine }} \land \ob{(a \lor b)}{T}) \sii (\ob{c \lor \ub{(y \land a)}{\perp}}{\text{\red{¡necesito }}\orL \red{!}} \lor b))
+        $$
+  \item
+\end{enumerate}

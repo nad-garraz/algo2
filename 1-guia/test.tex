@@ -1,0 +1,324 @@
+\input{preamble.tex}
+\input{macros.tex}
+
+\begin{document}
+\begin{algorithm}[H] \caption{
+    How to write algorithms
+  }
+  \requiere{$x \en \reales > 0$}
+  \asegura{tu vieja}
+
+  \BlankLine
+  initialization\;
+  \While{not at end of this document}{
+    read current \comment*[r]{This is a comment}
+    \eIf{understand}{
+      go to next section\;
+      current section becomes this one\;
+    }{
+      go back to the beginning of current section\;
+    }
+  }
+\end{algorithm}
+
+\section*{Ejercicios}
+
+\begin{enunciado}{\ejercicio}
+  Asumiendo que el valor de $b$ y $c$ es verdadero, el de $a$ es $falso$ y el de $x$ e $y$ es indefinido, indicar cuáles de los operadores
+  deben ser operadores "luego" para que la expresión no se indefina nunca:\par
+  \begin{enumerate}[label=\alph*)]
+    \item $(\neg x \lor b)$
+    \item $((c \lor (y \land a)) \lor b)$
+    \item
+    \item
+    \item
+    \item $(((c \lor y) \land (a \lor b)) \sii (c \lor (y \land a) \lor b))$
+    \item
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item $(\neg x \lor b)$.\par
+        Tengo que evaluar de \textit{izquierda a derecha} y se cortocircuita si el resultado de la fórmula es independiente de lo que resta leer.
+        Cuando hay un disyunción con tener $x = F$, de manera que $\neg x = T$ ya puedo parar de evaluar. Pero si $x$ está indefinida, no hay nada que
+        peuda hacer.
+
+  \item $((c \lor (y \land a)) \lor b)$
+  \item
+  \item
+  \item
+  \item
+        Para que la disyunción seguro no se indefina, necesito que el primer predicado sea \textit{verdadero} y la conjunción eso sucede si el primer predicado
+        es \textit{falso}.
+        $$
+          ((\ub{(c \lor y)}{c \to T.\text{ No se indefine }} \land \ob{(a \lor b)}{T}) \sii (\ob{c \lor \ub{(y \land a)}{\perp}}{\text{\red{¡necesito }}\orL \red{!}} \lor b))
+        $$
+  \item
+\end{enumerate}
+
+\begin{enunciado}{\ejercicio}
+  Sean $p, q$ y $r$ tres variables de las que se sabe que:
+  \begin{enumerate}[label=\tiny$\blacksquare$]
+    \item $p$ y $q$ nunca están indefinidas
+    \item $r$ se indefine sii $q$ es \textit{verdadera}
+  \end{enumerate}
+  Proponer una fórmula que nunca se indefina, utilizando siempre las tres variables y que sea verdadera si y solo si se cumple que:
+  \begin{multicols}{2}
+    \begin{enumerate}[label=\alph*)]
+      \item Al menos una es verdadera.
+      \item Ninguna es verdadera.
+      \item Exactamente una de las tres es verdadera.
+      \item Solo $p$ y $q$ son verdaderas.
+      \item No todas al mismo tiempo son verdaderas.
+      \item $r$ es verdadera.
+    \end{enumerate}
+  \end{multicols}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item Al menos una es verdadera.
+        $$
+          (p \lor q) \orL r
+        $$
+        \red{Preguntar por solución del apunte, pqr=100?}
+
+  \item Ninguna es verdadera. En este caso $r$ no se indefine.
+        $$
+          \neg(p \land q \land r)
+        $$
+
+        \red{Preguntar por solución del apunte, pqr=100?}
+
+  \item Exactamente una de las tres es verdadera.
+        $$
+          (p \lor q) \orL r
+        $$
+
+  \item Solo $p$ y $q$ son verdaderas. $r$ debe ser 0 cuando $q = 0$
+        $$
+          (p \lor q) \orL \neg r
+        $$
+        \red{solo $p$ y $q$?}
+
+  \item No todas al mismo tiempo son verdaderas.
+
+  \item $r$ es verdadera.
+        \red{Preguntar por solución del apunte, pqr=100?}
+
+\end{enumerate}
+
+\begin{enunciado}{\ejercicio}
+  Determinar, para cada aparición de variables, si dicha aparición se encuentra libre o ligada. En caso de estar ligada,
+  aclarar a qu[e cuantificador lo está. En los casos en que sea posible, porponer valores para las variables libres de modo
+  tal que las expresiones sean verdaderas.
+
+  \begin{enumerate}[label=\alph*)]
+    \item $(\paratodo x: \enteros)(0 \leq x < n \to x+y =z)$
+    \item d
+    \item d
+    \item $(\paratodo j: \enteros)(j \leq 0 \entonces P(j) ) \land P(j)$
+  \end{enumerate}
+
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item $(\paratodo x: \enteros)(0 \leq x < n \to x+y =z)$
+  \item
+  \item
+  \item $(\paratodo \blue{j}: \enteros)(\blue{j} \leq 0 \entonces P(\blue{j}) ) \land P(\yellow{j})$.\par
+
+        Las \blue{jotas} están ligadas al $\paratodo$, pero la \yellow{j} está
+        \href{https://youtu.be/7812dngARbk?t=43}{libre}.
+\end{enumerate}
+
+\begin{enunciado}{\ejercicio}
+  Sea $P(x: \enteros)$ y $Q(x: \enteros)$ dos predicados cualquiera. Explicar cuál es el error de traducción a
+  fórmulas de los siguientes enunciados. Dar un ejemplo en el cuál sucede el problema y luego corregirlo.
+  \begin{enumerate}[label=\alph*)]
+    \item "\textit{Todos los naturales menores a 10 cumplen P}":
+          $$
+            (\paratodo i : \enteros)((0 \leq i < 10) \land P(i))
+          $$
+
+    \item "\textit{Algún natural menor a 10 cumple P}":
+          $$
+            (\existe i : \enteros)((0 \leq i < 10) \entonces P(i))
+          $$
+
+    \item "\textit{Todos los naturales menores a 10 que cumplen P y Q}":
+          $$
+            (\paratodo x : \enteros)((0 \leq x < 10) \entonces (P(x) \land Q(x)))
+          $$
+
+    \item "\textit{No hay ningún natural menor a 10 que cumpla $P$ y $Q$}":
+          $$
+            (\paratodo x : \enteros)((0 \leq x < 10) \entonces (P(x) \land Q(x)))
+          $$
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item "\textit{Todos los naturales menores a 10 cumplen P}":
+        $$
+          (\paratodo i : \enteros)\ub{(\ob{(0 \leq i < 10)}{f(i)} \land P(i))}{R(i)} \sii (\paratodo i : \enteros)(R(i))
+        $$
+        Como el cuantificador $\red{\paratodo}$ generaliza la conjunción. Suponiendo que $P(i)$ \red{no se indefine}:
+        $$
+          (\paratodo i : \enteros)(R(i))
+          \sii
+          R(-N) \land R(-N+1)
+          \land \dots \land
+          \blue{R(0)}
+          \land \blue{\dots} \land
+          \blue{R(9)} \land
+          R(10)
+          \land \dots \land
+          R(N)
+        $$
+        Obtengo un resultado donde sé que los $\blue{R(0)},\blue{\dots}, \blue{R(9)}$ van a tener un valor \verdadero, pero el resto de los $R(i)$ van a tener
+        un valor de \falso, ya que no cumplen $f(i)$.\par
+        Por lo tanto busco una solución para que esos $R(i)$ no sean moscas en mi sopa, con "\red{$\entonces$}" dado que:
+        $$
+          \ub{\falso \entonces \text{\marron{\faIcon{poo}}}}{\verdadero \text{ \faIcon{glass-cheers}}}
+        $$
+
+        Entonces cambio ese $\land$ por un $\entonces_L$, donde me aseguro de lidiar con potenciales
+        indefiniciones de $P(i)$ que harían que todo explote:
+        $$
+          (\paratodo i : \enteros)\ub{(\ob{(0 \leq i < 10)}{f(i)} \entoncesL P(i))}{S(i)} \sii (\paratodo i : \enteros)(S(i))
+        $$
+        Ahora la situación es más feliz:
+        $$
+          (\paratodo i : \enteros)(S(i))
+          \sii
+          S(-N) \land S(-N+1)
+          \land \dots \land
+          \blue{S(0)}
+          \land \blue{\dots} \land
+          \blue{S(9)} \land
+          S(10)
+          \land \dots \land
+          S(N)
+        $$
+        Todos los $\blue{S(i)}$ son verdaderos y no se indefinen por el $\red{\entoncesL}$
+
+  \item "\textit{Algún natural menor a 10 cumple P}":
+        $$
+          (\existe i : \enteros)((0 \leq i < 10) \entonces P(i))
+        $$
+
+  \item "\textit{Todos los naturales menores a 10 que cumplen P y Q}":
+        $$
+          (\paratodo x : \enteros)((0 \leq x < 10) \entonces (P(x) \land Q(x)))
+        $$
+
+  \item "\textit{No hay ningún natural menor a 10 que cumpla $P$ y $Q$}":
+        $$
+          (\paratodo x : \enteros)((0 \leq x < 10) \entonces (P(x) \land Q(x)))
+        $$
+        Propongo
+        $$
+          (\paratodo x : \enteros)\bigl((\ub{0 \leq x < 10}{f(x)}) \red{\entoncesL} \ub{
+          \red{\neg}(P(x) \red{\andL} Q(x))} {g(x)}\bigr)
+        $$
+        Con el $\entoncesL$ mato los casos que no cumplen $f(x)$. Luego $g(x)$ solo toma valor \falso cuando $P(x)$ y $Q(x)$ son ambas \verdadero.
+\end{enumerate}
+
+\begin{enunciado}{\ejercicio}
+  Sean $P(x:\enteros)$ y $Q(x: \enteros)$ dos predicados que nunca se indefinen. Escribir al predicado asociado
+  a cada uno de los siguientes enunciados:
+  \begin{enumerate}[label=\tiny\faIcon{yin-yang}$_{\arabic*}$]
+    \item \textit{"Existe un único natural menor a 10 que cumple P"}
+    \item \textit{"Existen al menos dos números naturales menores a 10 que cumplen P"}
+    \item \textit{"Existen exactamente dos números naturales menores a 10 que cumplen P"}
+    \item \textit{"Todos los enteros pares que cumplen P, no cumplen Q"}
+    \item \textit{"Si un entero cumple P y es impar, no cumple Q"}
+    \item \textit{"Todos los enteros pares cumplen P, y todos los enteros impares que no cumplen P cumplen Q"}
+    \item \textit{"Si hay un número natural menor a 10 que no cumple P entonces ninfuno natural menor a 10 cumple Q; y si todos los
+            naturales menores a 10 cump,en P entonces hay al menos dos naturales menores a 10 que cumplen Q"}
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\tiny\faIcon{yin-yang}$_{\arabic*}$]
+  \item \textit{"Existe un único natural menor a 10 que cumple P"}\par
+        $$
+          (\existe n : \enteros)
+          \biggl(
+          \bigl(
+          0 \leq n < 10 \land P(n)
+          \bigr)
+          \land
+          (\paratodo m : \enteros) \bigl(0 \leq m < 10  \entonces (m = n \entonces P(m))  \bigr) \biggr)
+        $$
+
+  \item \textit{"Existen al menos dos números naturales menores a 10 que cumplen P"}
+
+        $$
+          [\existe n: \enteros]
+          \ob{
+            \ub{\bigl[ 0 \leq n < 10 \land P(n) \bigr]}{f_1(n)}
+            \land
+            [\existe m: \enteros]
+            \ub{\bigl[ 0 \leq m < 10 \land P(m) \land m \distinto n \bigr]}{f_2(n,m)}
+          }{f_3}
+        $$
+        \begin{enumerate}[label=\tiny\faIcon{meh-rolling-eyes}]
+          \item El \textit{cuantificador existencial} me generaliza la disyunción:
+                $$
+                  \dots
+                  \lor f_1(-N)
+                  \lor f_1(-N+1)
+                  \lor\dots
+                  \lor \blue{f_1(0)}
+                  \lor\dots
+                  \lor \blue{f_1(9)}
+                  \lor\dots
+                  \lor f_1(N-1)
+                  \lor f_1(N)
+                  \lor\dots
+                $$
+                Los \blue{$f_1(n)$ azules,} tienen valores de \verdadero, para la primera condición de $f_1$, los demás son falsos.
+                Como tengo concatenación de disyunciones, con que una de las \blue{azules} cumpla también $P(n)$, listo tengo un $f_1$
+                \verdadero para algún $n$.
+                $$
+                  \blue{f_1(0)}
+                  \lor\dots
+                  \lor \blue{f_1(9)}
+                $$
+                Esos valores son los que me sirven para calcular los valores de verdad que hay en $f_1 \land f_2$.
+
+          \item Muy parecido ahora con $f_2$
+                $$
+                  \dots
+                  \lor f_2(-N, \blue{n})
+                  \lor f_2(-N+1, \blue{n})
+                  \lor\dots
+                  \lor \purple{f_2(0, \blue{n})}
+                  \lor\dots
+                  \lor \purple{f_2(9, \blue{n})}
+                  \lor\dots
+                  \lor f_2(N-1, \blue{n})
+                  \lor f_2(N, \blue{n})
+                  \lor\dots
+                $$
+                Nuevamente alguno de los \purple{$m$}, van a cumplir las condiciones \purple{$f_1(m,n)$}
+
+          \item Por lo tanto obtengo siempre valores verdaderos en la expresión final $f_3$.
+        \end{enumerate}
+
+  \item \textit{"Existen exactamente dos números naturales menores a 10 que cumplen P"}
+
+  \item \textit{"Todos los enteros pares que cumplen P, no cumplen Q"}
+
+  \item \textit{"Si un entero cumple P y es impar, no cumple Q"}
+        $$
+          (\paratodo n: \enteros)\bigr( (P(n) \land n \mod 2 \distinto 0 ) \entonces \neg Q(n) \bigr)
+        $$
+
+  \item \textit{"Todos los enteros pares cumplen P, y todos los enteros impares que no cumplen P cumplen Q"}
+
+  \item \textit{"Si hay un número natural menor a 10 que no cumple P entonces ninfuno natural menor a 10 cumple Q; y si todos los
+          naturales menores a 10 cump,en P entonces hay al menos dos naturales menores a 10 que cumplen Q"}
+\end{enumerate}
+
+\end{document}

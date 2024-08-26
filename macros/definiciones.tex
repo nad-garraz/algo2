@@ -1,0 +1,117 @@
+% Maths
+\DeclareMathOperator{\reales}{\mathbb{R}}
+\DeclareMathOperator{\enteros}{\mathbb{Z}}
+
+\DeclareMathOperator{\distinto}{\neq}
+\renewcommand{\mod}{\bmod}
+\DeclareMathOperator{\existe}{\exists}
+\DeclareMathOperator{\paratodo}{\forall}
+\DeclareMathOperator{\entonces}{\rightarrow}
+\DeclareMathOperator{\sii}{\leftrightarrow}
+\DeclareMathOperator{\orL}{\lor_{\text{L}}}
+\DeclareMathOperator{\andL}{\land_{\text{L}}}
+\DeclareMathOperator{\entoncesL}{\rightarrow_{\text{L}}}
+\DeclareMathOperator{\siiL}{\leftrightarrow_{\text{L}}}
+\def\falso{\textit{falso}\xspace}
+\def\verdadero{\textit{verdadero}\xspace}
+
+\newcommand{\ub}[2]{ \underbrace{\textstyle #1}_{\mathclap{#2}} }
+\newcommand{\ob}[2]{ \overbrace{\textstyle #1}^{\mathclap{#2}} }
+
+\def\en{\in}
+
+%% ESCRIBIR CODIFGO
+% Nuevos nombres para las keywords
+\SetKwInput{requiere}{requiere}
+\SetKwInput{asegura}{asegura}
+
+% formats
+\SetCustomAlgoRuledWidth{\textwidth}
+\SetAlgoCaptionLayout{centerline}
+\SetAlFnt{\small \ttfamily}
+\SetAlgoNlRelativeSize{0}
+
+% comments
+\newcommand{\commentstyle}[1]{\textcolor{OliveGreen}{\ttfamily\itshape #1}}
+\SetCommentSty{commentstyle}
+\SetKwComment{comment}{//}{}
+
+% Line numbers
+\SetNlSty{tt}{\color{purple}}{}
+
+%% FIN ESCRIBIR CODIFGO
+
+% separadores
+\newcommand{\separador}{
+  \par\noindent\rule{\linewidth}{0.4pt}\par
+}
+\newcommand{\separadorCorto}{
+  \par\noindent\rule{0.5\linewidth}{0.4pt}\par
+}
+
+% Colores
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\green}[1]{\textcolor{OliveGreen}{#1}}
+\newcommand{\blue}[1]{\textcolor{Cerulean}{#1}}
+\newcommand{\cyan}[1]{\textcolor{cyan}{#1}}
+\newcommand{\yellow}[1]{\textcolor{YellowOrange}{#1}}
+\newcommand{\magenta}[1]{\textcolor{magenta}{#1}}
+\newcommand{\purple}[1]{\textcolor{purple}{#1}}
+\newcommand{\rosa}[1]{\textcolor{pink}{#1}}
+\newcommand{\transparente}[1]{\color[rgb]{1,1,1,0.5}{#1}}
+\newcommand{\marron}[1]{\color{brown}{#1}}
+
+%% Cartelito HACER EJERCICIO
+\newcommand{\hacer}{
+  {\color{red!80!black}{\faIcon[regular]{flushed}... hay que hacerlo! \faIcon[regular]{sad-cry}}}\par
+  {\color{black!70!white}
+    \small Si querés mandarlo: Telegram $\to$ \href{\dirTelegram}{\small\faIcon{telegram}},
+    o  mejor aún si querés subirlo en \LaTeX $\to$ \href{\dirRepo}{\small \faIcon{github}}.
+  }\par
+}
+
+% Update time
+\def\update{\tiny
+  {\today\ @ \currenttime}
+}
+
+%=======================================================
+% sección ejercicio con su respectivo formato y contador
+%=======================================================
+%iconito
+\def\fueguito{{\color{orange}{\faIcon{fire}}}}
+
+\newcounter{ejercicio}[section] % contador que se resetea en cada sección
+\renewcommand{\theejercicio}{\arabic{ejercicio}} % el contador es un número arabic
+\newcommand{\ejercicio}{%
+  \stepcounter{ejercicio}% incremento en uno
+  \titleformat{\section}[runin]{\bfseries}{\theejercicio}{1em}{}%
+  \section*{Ejercicio \theejercicio}\labelEjercicio{ej:\theejercicio}
+}
+
+% Label y refencia para ejercicio hay alguna forma más elegante de hacer esto?
+\newcommand{\labelEjercicio}[1]{
+  \addtocounter{ejercicio}{-1} % counter - 1
+  \refstepcounter{ejercicio} % referencia al anterior y luego + 1
+  \label{#1}
+}
+\newcommand{\refEjercicio}[1]{{\bf \ref{#1}.}}
+
+%%%=======================================================
+%%% fin sección ejercicio con su respectivo formato y contador
+%%%=======================================================
+
+% Enviroment ENUNCIADo
+\newenvironment{enunciado}[1]{% Toma un parametro obligatorio: \ejExtra o \ejercicio 
+  \par
+  \noindent
+  \begin{minipage}{\linewidth}
+    \separador % linea sobre el enunciado
+    #1
+    }% contenido
+    {
+    \separadorCorto % linea debajo del enunciado
+    \par
+  \end{minipage}\par
+}
+\def\libre{https://youtu.be/7812dngARbk?t=43}

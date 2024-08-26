@@ -1,0 +1,50 @@
+  \begin{enunciado}{\ejercicio}
+    Sean $p, q$ y $r$ tres variables de las que se sabe que:
+    \begin{enumerate}[label=\tiny$\blacksquare$]
+      \item $p$ y $q$ nunca están indefinidas
+      \item $r$ se indefine sii $q$ es \textit{verdadera}
+    \end{enumerate}
+    Proponer una fórmula que nunca se indefina, utilizando siempre las tres variables y que sea verdadera si y solo si se cumple que:
+    \begin{multicols}{2}
+      \begin{enumerate}[label=\alph*)]
+        \item Al menos una es verdadera.
+        \item Ninguna es verdadera.
+        \item Exactamente una de las tres es verdadera.
+        \item Solo $p$ y $q$ son verdaderas.
+        \item No todas al mismo tiempo son verdaderas.
+        \item $r$ es verdadera.
+      \end{enumerate}
+    \end{multicols}
+  \end{enunciado}
+
+  \begin{enumerate}[label=\alph*)]
+    \item Al menos una es verdadera.
+          $$
+            (p \lor q) \orL r
+          $$
+          \red{Preguntar por solución del apunte, pqr=100?}
+
+    \item Ninguna es verdadera. En este caso $r$ no se indefine.
+          $$
+            \neg(p \land q \land r)
+          $$
+
+          \red{Preguntar por solución del apunte, pqr=100?}
+
+    \item Exactamente una de las tres es verdadera.
+          $$
+            (p \lor q) \orL r
+          $$
+
+    \item Solo $p$ y $q$ son verdaderas. $r$ debe ser 0 cuando $q = 0$
+          $$
+            (p \lor q) \orL \neg r
+          $$
+          \red{solo $p$ y $q$?}
+
+    \item No todas al mismo tiempo son verdaderas.
+
+    \item $r$ es verdadera.
+          \red{Preguntar por solución del apunte, pqr=100?}
+
+  \end{enumerate}

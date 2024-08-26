@@ -1,0 +1,43 @@
+% Info para armar título.
+
+\title{\tt Apunte único: Algoritmos y estructura de datos} % título
+
+\author{\tt Nad Garraz y comunidad (ojalá)\\
+  \tt Facultad de Ciencias Exactas y Naturales \\
+  \tt UBA} % autores y lugar
+
+\date{} % Así no aparece la fecha 
+
+\maketitle  % para que aparezca el título en el documento
+
+\thispagestyle{empty} % borro el número de la primera página
+
+\pagestyle{fancy} % activo los headers y footers
+
+\fancyhead{} % borro lo que haya en los headers
+\fancyfoot{} % borro lo que haya en los headers
+
+\fancyhead[L]{\tt Algoritmos y estructura de datos} % encabezado izquierdo
+\fancyhead[C]{\tt Práctica \guia} % encabezado central
+\fancyhead[R]{\tt Página \thepage} %% encabezado derecho
+
+\fancyfoot[EL]{ % pie izquierdo pares
+  \href{\dirRepo}{\tt\small\faIcon{github}
+    ¡Mandá fixes o subí ejercicios,
+    críticas, todo sirve.\yellow{\FiveStar} al repo!}
+}
+
+\fancyfoot[OL]{ % pie izquierdo impares
+   \tt\href{\dirTelegram}{\small\faIcon{telegram} ¿Errores? Avisá
+    así se corrige.
+  }
+}
+
+% \fancyfoot[EC]{\small \update}                                                                        % pie izquierdo pares
+\fancyfoot[OR]{
+   \small\hyperlink{indice-\guia}{\tt
+    Ir a índice $\uparrow$\\ \vspace{-5pt}
+    \update}
+}             % pie derecho pares
+
+\fancyfoot[ER]{\small \hyperlink{indice-\guia}{\tt Ir a índice $\uparrow$}}                            % pie derecho impares

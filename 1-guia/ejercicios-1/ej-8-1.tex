@@ -1,0 +1,21 @@
+\begin{enunciado}{\ejercicio}
+  Determinar, para cada aparición de variables, si dicha aparición se encuentra libre o ligada. En caso de estar ligada,
+  aclarar a qué cuantificador lo está. En los casos en que sea posible, porponer valores para las variables libres de modo
+  tal que las expresiones sean verdaderas.
+
+  \begin{enumerate}[label=\alph*)]
+    \item $(\paratodo x: \enteros)(0 \leq x < n \to x+y =z)$
+    \item \hacer
+    \item \hacer
+    \item $(\paratodo j: \enteros)(j \leq 0 \entonces P(j) ) \land P(j)$
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item $(\paratodo x: \enteros)(0 \leq x < n \to x+y =z)$
+  \item \hacer
+  \item \hacer
+  \item $(\paratodo \blue{j}: \enteros)(\blue{j} \leq 0 \entonces P(\blue{j}) )
+          \land P(\yellow{j})$.\par
+        Las \blue{jotas} están ligadas al cuantificador universal, pero la \yellow{$j$} está \href{\libre}{libre}.
+\end{enumerate}
