@@ -34,7 +34,7 @@ ir curando y modificando junto con las guías de nuevos cuatrimestres. Vas a ten
 Un apunte con sección _ejercicios de parciales_ que vaya creciendo y mejorando cuatrimestre a cuatrimestre,
 _curados y escritos por los alumnos_.
 
-_¡Esto está para que _cualquier individuo con ganas de contribuir pueda hacerlo!_
+_¡Esto está para que cualquier individuo con ganas de contribuir pueda hacerlo!_
 
 ## Estructura del repo
 
@@ -54,7 +54,8 @@ _¡Esto está para que _cualquier individuo con ganas de contribuir pueda hacerl
 
 ## Contribuir
 
-Si querés contribuir _no hace falta codear ni saber LaTeX_, podés marcar algún error que pueda haber en un ejercicio por ejemplo. Ahí podés comentarnos por el [grupo de Telegram](https://t.me/+1znt2GV1i8cwMTNh) o mail así lo solucionamos y aumentamos la calidad del trabajo.
+Si querés contribuir _no hace falta codear ni saber LaTeX_, podés marcar algún error que pueda haber en un ejercicio por ejemplo. Ahí podés comentarnos por el
+[grupo de Telegram](https://t.me/+aUVX4lkTHlg1MGMx) o mail así lo solucionamos y aumentamos la calidad del trabajo.
 Si sabés un poco de LaTeX, ya vas a estar bien, porque hay muchísimos ejercicios con los comandos para que copies y pegues.
 
 _Para contribuir al código directamente tenés que:_
