@@ -72,7 +72,7 @@ Para compilar los archivos de LaTeX una vez que fueron modificados:
 - Con la terminal, entrar a la carpeta de la guía que quieras compilar, por ejemplo la guía 1.
 
 ```bash
-$ cd algo1/1-guia/
+$ cd algo2/1-guia/
 $ pdflatex 1-sol.tex
 ```
 
