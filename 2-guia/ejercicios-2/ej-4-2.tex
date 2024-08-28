@@ -1,3 +1,104 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Escriba los siguientes predicados auxiliares sobre secuencias de enteros,
+  aclarando los tipos de los parámetros que recibe:
+  \begin{enumerate}[label=\alph*)]
+    \item \texttt{esPrefijo}, que determina si una secuencia es prefijo de otra.
+
+    \item \texttt{estáOrdenanda}, que determina si la secuencia está ordenada de menor a mayor.
+
+    \item \texttt{hayUnoParQueDivideAlResto}, que determina si hay un elemento par en la secuencia
+          que divide a todos los otros elementos de la secuencia.
+
+    \item \texttt{enTresPartes}, que determina si en la secuencia aparecen (de izquierda a derecha)
+          primero 0s, después 1s y por último 2s.\par
+          Por ejemplo $\kets{0,0,1,1,1,1,2}$ cumple con \texttt{enTresPartes}, pero $\kets{0,1,3,0}$ o $\kets{0,0,0,1,1}$ no.
+          ¿Cómo modificaría la expresión para que se admitan cero apariciones de 0s, 1s y 2s (es decir, para que por ejemplo
+          $\kets{0,0,0,1,1}$ o $\kets{}$ sí cumplan \texttt{enTresPartes})?
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item
+        \predicado{esPrefijo}{$s:\secuencia{\enteros}, t:\secuencia{\enteros}$}
+        {$
+            (\paratodo i : \enteros)
+            \bigl(
+            0 \leq i < |s| \leq |t|
+            \entoncesL
+            s[i] = t[i]
+            \bigr)
+          $}
+
+  \item
+        \predicado{estáOrdenanda}{$s:\secuencia{\enteros}$}
+        {$
+            (\paratodo i : \enteros)
+            \bigl(
+            0 < i < |s|
+            \entoncesL
+            s[i-1] \taa{\red{!}}{}\leq s[i]
+            \bigr)
+          $}
+
+  \item
+        \predicado{hayUnoParQueDivideAlResto}{$s:\secuencia{\enteros}$}
+        {\hspace{-1em}$
+            (\existe j : \enteros)
+            \Bigl(
+            \bigl(
+            (0 < j < |s|)
+            \land
+            (s[j] \mod 2 = 0)
+            \bigr)
+            \andL
+            (\paratodo i : \enteros)
+            \bigl(
+            (0 < i < |s|)
+            \entoncesL
+            (s[i] \mod s[j] = 0)
+            \bigr)
+            \Bigr)
+          $}
+
+  \item
+        \begin{itemize}
+          \item
+                \predicado{enTresPartes}{$s:\secuencia{\enteros}$}
+                {$
+                    \texttt{estáOrdenanda}(s) \land
+                    \texttt{pertenece}(s,0) \land
+                    \texttt{pertenece}(s,1) \land
+                    \texttt{pertenece}(s,2)
+                  $}
+          \item[\hypertarget{aux:pertenece}{\tiny\faIcon{gamepad}}]
+                \predicado{pertenece}{$s:\secuencia{\enteros},n: \enteros$}
+                {
+                  $
+                    (\existe i: \enteros)(0 \leq i < |s| \andL s[i] = n)
+                  $
+                }
+
+          \item
+                \predicado{enTresPartes2}{$s:\secuencia{\enteros}$}
+                {$
+                    \texttt{estáOrdenanda}(s)
+                    \entoncesL
+                    (\paratodo i: \enteros)
+                    \Bigl(
+                    (0 \leq i < |s|)
+                    \entoncesL
+                    \bigl(
+                    s[i] = 0
+                    \lor
+                    s[i] = 1
+                    \lor
+                    s[i] = 2
+                    \bigr)
+                    \Bigr)
+                  $}
+        \end{itemize}
+\end{enumerate}
+
+\begin{aportes}
+  \item \href{\dirRepo}{Nad Garraz \github}
+\end{aportes}

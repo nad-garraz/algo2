@@ -2,25 +2,36 @@
 \DeclareMathOperator{\reales}{\mathbb{R}}
 \DeclareMathOperator{\enteros}{\mathbb{Z}}
 
+\newcommand{\sumatoria}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\productoria}[2]{\prod\limits_{#1}^{#2}}
+
+\DeclareMathOperator{\vacio}{\varnothing}
 \DeclareMathOperator{\distinto}{\neq}
 \renewcommand{\mod}{\bmod}
+\DeclareMathOperator{\en}{\in}
 \DeclareMathOperator{\existe}{\exists}
 \DeclareMathOperator{\paratodo}{\forall}
 \DeclareMathOperator{\entonces}{\rightarrow}
 \DeclareMathOperator{\sii}{\leftrightarrow}
-\DeclareMathOperator{\orL}{\lor_{\text{L}}}
-\DeclareMathOperator{\andL}{\land_{\text{L}}}
-\DeclareMathOperator{\entoncesL}{\rightarrow_{\text{L}}}
+\DeclareMathOperator{\orL}{\,\lor_{\text{L}}\,}
+\DeclareMathOperator{\andL}{\,\land_{\text{L}}\,}
+\DeclareMathOperator{\entoncesL}{\,\rightarrow_{\text{L}}\,}
 \DeclareMathOperator{\siiL}{\leftrightarrow_{\text{L}}}
-\def\falso{\textit{falso}\xspace}
-\def\verdadero{\textit{verdadero}\xspace}
+\def\falso{\texttt{\green{falso}}\xspace}
+\def\verdadero{\texttt{\blue{verdadero}}\xspace}
 
 \newcommand{\ub}[2]{ \underbrace{\textstyle #1}_{\mathclap{#2}} }
 \newcommand{\ob}[2]{ \overbrace{\textstyle #1}^{\mathclap{#2}} }
+\newcommand{\secuencia}[1]{\texttt{seq}\langle #1 \rangle}
+\newcommand{\kets}[1]{\langle #1 \rangle}
 
 \def\en{\in}
 
-%% ESCRIBIR CODIFGO
+% comandos de pseudocodigo
+\def\IfThenElseFi{\texttt{IfThenElseFi}}
+\def\pertenece{\texttt{pertenece}}
+
+%% ESCRIBIR CODIGO
 % Nuevos nombres para las keywords
 \SetKwInput{requiere}{requiere}
 \SetKwInput{asegura}{asegura}
@@ -114,4 +125,94 @@
     \par
   \end{minipage}\par
 }
+%% Predicado
+\newcommand{\predicado}[3]{
+  \texttt{pred \purple{#1}} \textrm{$\bigl($#2$\bigr)$ $\bigl\{$} \par
+  \hspace{2em} #3 \par
+  \textrm{$\bigr\}$}
+}
+
+%% Procedimiento
+\newcommand{\procedimiento}[5]{
+  \texttt{proc #1} $\bigl($#2$\bigr)$ : #3 \par
+  \hspace{2em}\texttt{requiere}\{ #4 \} \par
+  \hspace{2em}\texttt{asegura}\{ #5 \}
+}
+
+%% Auxiliares
+\newcommand{\auxiliar}[4][]{
+        \texttt{aux \purple{#2}} $\bigl($#3$\bigr)$#1 $=$ #4
+}
+
+\def\True{\texttt{True}\xspace}
+\def\False{\texttt{False}\xspace}
+\def\res{\texttt{res}\xspace}
+\def\Bool{\texttt{Bool}\xspace}
+
+
+
+%=======================================================
+% Comandos con flechas extensibles.
+%=======================================================
+% *Flechita* extensible con texto {arriba} y [abajo] 
+\NewDocumentCommand{\flecha}{m o}{%
+  \IfNoValueTF{#2}{%
+    \xrightarrow[]{\text{#1}}
+  }{
+    \xrightarrow[\text{#2}]{\text{#1}}
+  }
+}
+% *Si solo si* extensible con texto {arriba} y [abajo] 
+\NewDocumentCommand{\Sii}{m o}{%
+  \IfNoValueTF{#2}{%
+    \xLeftrightarrow[]{\text{#1}}
+  }{
+    \xLeftrightarrow[\text{#2}]{\text{#1}}
+  }
+}
+
+% *Si solo si* extensible con texto {arriba} y [abajo] 
+\NewDocumentCommand{\Entonces}{m o}{%
+  \IfNoValueTF{#2}{%
+    \xRightarrow[]{\text{#1}}
+  }{
+    \xRightarrow[\text{#2}]{\text{#1}}
+  }
+}
+
+%=======================================================
+% fin comandos con flechas extensibles.
+
+% como el stackrel pero también se puede poner algo debajo
+\newcommand{\taa}[3]{ % [t]exto [a]rriba y [a]bajo
+  \overset{\mathclap{#1}}{\underset{\mathclap{#2}}{#3}}
+}
+
+% Contributors
+\newcommand{\aporte}[2]{
+  \href{#1}{#2}
+}
+
+\newenvironment{aportes}{
+  \par
+  \vspace{10pt}
+  \begin{minipage}{1\linewidth}
+    \tt\footnotesize
+    Los culpables de que esto haya sucedido:
+    \vspace{-10pt}
+    \begin{multicols}{3}
+      \begin{itemize}[label={\tiny\yellow{\faIcon{medal}}}]
+        }{
+      \end{itemize}
+    \end{multicols}
+  \end{minipage}
+}
+
+%% links
 \def\libre{https://youtu.be/7812dngARbk?t=43}
+
+%%% Iconos más usados
+\def\github{\faIcon{github}}
+\def\instagram{\faIcon{instagram}}
+\def\tiktok{\faIcon{tiktok}}
+\def\linkedin{\faIcon{linkedin}}

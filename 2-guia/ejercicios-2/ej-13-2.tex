@@ -1,3 +1,61 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Especificar los siguietnes problemas sobre secuencias:
+  \begin{enumerate}[label=\alph*)]
+    \item Dadas dos secuencias $s$ y $t$, decidir si $s$ está \textit{incluida} en $t$, es decir,
+          si todos los elementos de $s$ aparecen en $t$ en igual o mayor cantidad.
+    \item
+
+    \item Dada una secuencia de números enteros, devolver aquel que divida a más elementos
+          de la secuencia. El elemento tiene que pertenecer a la secuencia original.
+          Si existe más de un elemento que cumple esta propiedad, devolver alguno de ellos.
+    \item
+    \item
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item
+        \procedimiento{esSubconjunto}
+        {s: $\enteros$, t:$\enteros$}
+        {\Bool}
+        {\True}
+        {$(\paratodo y \en s) \entoncesL \pertenece(t,y)$}
+
+        \procedimiento{esSubconjunto2}
+        {s: $\enteros$, t:$\enteros$}
+        {\Bool}
+        {\True}
+        {$(\paratodo y :\enteros)
+            \bigl(
+            \pertenece(s,y) \entoncesL \pertenece(t,y)
+            \bigr)$}
+
+        Por si acaso: \hyperlink{aux:pertenece}{definición de auxiliar \pertenece}
+
+        \red{Consultar por sintaxis de los asegura. También no se especifica el \texttt{tipo}
+          cómo se pone el genérico? T?}
+
+  \item
+
+  \item
+        \procedimiento{cantElemQDiv}
+        {in $s: \secuencia{\enteros}, e: \enteros$} {$\enteros$}
+        {$e \distinto 0$}
+        {$\res = \sumatoria{i=0}{|s| - 1} \IfThenElseFi(s[i] \mod e = 0, 1, 0)$}\par\bigskip
+
+        \procedimiento{elMasDivisor}
+        {in $s: \secuencia{\enteros}$} {$\enteros$}
+        {$|s| > 0$}
+        {$\scriptstyle
+            (y \en s) \land (y \distinto 0) \land
+            \bigl(
+            \res = y \sii
+            (\paratodo y' \en s)
+            ( (y'\distinto 0) \entoncesL \texttt{cantElemQDiv}(s, y) \geq \texttt{cantElemQDiv}(s, y'))
+            \bigr)$ }
+
+        Cuando estoy escribiendo el asegura. Yo tengo que contemplar con que el $\res = y$ sea
+
+  \item
+  \item
+\end{enumerate}

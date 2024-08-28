@@ -1,3 +1,52 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Nombre los siguientes predicados auxiliares sobre secuencias de enteros:
+  \begin{enumerate}[label=\alph*)]
+    \item  \predicado{????}{$s:\seq{\enteros}$}
+          {$(\paratodo i : \enteros)
+              (0 \leq i < |s|
+              \entoncesL
+              s[i] \geq 0)$
+          }
+
+    \item  \predicado{????}{$s:\seq{\enteros}$}
+          {$(\paratodo i : \enteros)
+              \bigl(
+              (0 \leq i < |s|
+              \entoncesL
+              (\paratodo j : \enteros)
+              \bigl(
+              (0 \leq j < |s| \land i \distinto j)
+              \entoncesL
+              (s[i] \distinto s[j])
+              \bigr)
+              \bigr)$
+          }
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+        \item  \predicado{todosPositivos}{$s:\seq{\enteros}$}
+        {$(\paratodo i : \enteros)
+            (0 \leq i < |s|
+            \entoncesL
+            s[i] \geq 0)$
+        }
+
+  \item  \predicado{todosDistintos}{$s:\seq{\enteros}$}
+        {$(\paratodo i : \enteros)
+            \bigl(
+            (0 \leq i < |s|
+            \entoncesL
+            (\paratodo j : \enteros)
+            \bigl(
+            (0 \leq j < |s| \land i \distinto j)
+            \entoncesL
+            (s[i] \distinto s[j])
+            \bigr)
+            \bigr)$
+        }
+\end{enumerate}
+
+\begin{aportes}
+  \item \href{\dirRepo}{Nad Garraz \github}
+\end{aportes}

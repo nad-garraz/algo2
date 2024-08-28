@@ -1,3 +1,26 @@
+\texttt{Funciones auxiliares}\bigskip
+
 \begin{enunciado}{\ejercicio}
-\hacer
+  Nombrar los siguientes predicados sobre enteros:
+  \begin{enumerate}[label=\alph*)]
+    \item \predicado{????}{$x: \enteros$}
+          {$(\existe c : \enteros)(c > 0 \land (c * c = x)$}
+
+    \item \predicado{????}{$x: \enteros$}
+          {$(\paratodo n : \enteros)((1<n<x \entoncesL (x \mod n \distinto 0)$}
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item \predicado{esCuadradoPerfecto}{$x: \enteros$}{$(\existe c : \enteros)(c > 0 \land (c * c = x)$}
+
+  \item \predicado{esPrimo}{$x: \enteros$}
+        {$(\paratodo n : \enteros)((1 < n <x
+                \entoncesL
+                (x \mod n \distinto 0)$}
+\end{enumerate}
+
+\begin{aportes}
+  \item \href{\dirRepo}{Nad Garraz \github}
+\end{aportes}
+

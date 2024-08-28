@@ -1,3 +1,27 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sea $s$ uan secuencia d eelementos de tipo $\enteros$. escribir una expresión
+  (utilizando sumatoria y productoria) tal que:
+  \begin{enumerate}[label=\alph*)]
+    \item Cuente la cantidad de veces que aparece el elemento $e$ de tipo $\enteros$ en la secuencia $s$.
+    \item Sume los elementos de las posiciones impares de la la secuencia $s$.
+    \item Sume los elementos mayores a 0 0contenidos en la secuencia s.
+    \item Sume los inversos multiplicativos $(\frac{1}{x})$ de los elementos contenidos en la secuencia $s$ distintos a 0.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item \auxiliar[$:\enteros$]{\#ElementoEnSecuencia}{$s:\seq{\enteros}, e: \enteros$}
+        {$\sumatoria{i = 0}{|s| - 1} \texttt{ifThenElseFi}\bigl( s[i] = e,1,0 \bigr)$}
+
+\item \auxiliar[$:\enteros$]{SumaPosicionesImpares}
+        {$s:\seq{\enteros}$}
+                {$\sumatoria{i = 0}{|s| - 1} \texttt{ifThenElseFi}\bigl( i \mod 2 = 1, s[i], 0 \bigr)$}
+
+\item \auxiliar[$:\enteros$]{SumaElementosPositivos}
+        {$s:\seq{\enteros}$}
+                {$\sumatoria{i = 0}{|s| - 1} \texttt{ifThenElseFi}\bigl( s[i] > 0, s[i], 0 \bigr)$}
+
+\item \auxiliar[$:\enteros$]{SumaInvMultiplicativos}
+        {$s:\seq{\enteros}$}
+                {$\sumatoria{i = 0}{|s| - 1} \texttt{ifThenElseFi}\bigl( s[i] \distinto 0, \frac{1}{s[i]}, 0 \bigr)$}
+\end{enumerate}

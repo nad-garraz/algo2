@@ -1,3 +1,58 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sean $x$ y $r$ variables de tipo $\reales$. Considerar los siguientes predicados:
+  \begin{multicols}{2}
+    P1: $\{x \leq 0\}$\par
+    P2: $\{x \leq 10\}$\par
+    P3: $\{x \leq -10\}$\par
+    Q1: $\{r \geq x^2\}$\par
+    Q2: $\{r \geq 0\}$\par
+    Q3: $\{r = x^2\}$\par
+  \end{multicols}
+
+  \begin{enumerate}[label=\alph*)]
+    \item Indicar la relación de fuerza entre P1, P2 y P3.
+    \item Indicar la relación de fuerza entre Q1, Q2 y Q3.
+    \item Escribir 2 programas que cumplan con la siguietne especificación:\par
+          \procedimiento{hagoAlgo}
+          {in $x:\reales$}
+          {$\reales$}
+          {$x \leq 0$}
+          {$\res \geq x^2$}
+    \item \hacer
+    \item ¿Qué conclusión pueden sacar? ¿Qué debe cumplirse con respecto a las precondiciones y postcondiviones para que sea seguro
+          \textbf{reemplazar la especificación}?
+  \end{enumerate}
 \end{enunciado}
+
+Dadas las proposiciones lógicas $\alpha$ y $\beta$, se dice que $\alpha$ es más fuerte que
+$\beta$ si y solo si $\alpha \entonces \beta$ es una tautología.
+En este caso, también decimos que $\beta$ es más debil que $\alpha$.
+
+\begin{enumerate}[label=\alph*)]
+  \item Indicar la relación de fuerza entre P1, P2 y P3.
+        \begin{itemize}
+          \item Me gusta pensar que $P1 \subseteq P2$, por lo cual P1 debería ser más fuerte que P2.\par
+                \begin{center}
+                  \begin{tabular}{|c|c|c|c|c|c|}
+                    \hline
+                    ej       & P1 & P2 & P1 $\entonces$ P2 & P2 $\entonces$ P1 \\\rowcolor{lightgray}\hline
+                    $x=-1$   & 1  & 1  & 1                 & 1                 \\\rowcolor{lightgray}
+                    $x=5$    & 0  & 1  & 1                 & \red{0}           \\
+                    $\vacio$ & 1  & 0  & -                 & -                 \\\rowcolor{lightgray}
+                    $x=11$   & 0  & 0  & 1                 & 1                 \\\hline
+                  \end{tabular}
+                \end{center}
+          \item Siguiendo el razonamiento P3 $\subseteq$ P1 $\subseteq$ P2\par
+                La proposición más fuerte va a ser P3.
+        \end{itemize}
+
+  \item Siguiendo el razonamiento del inciso anterior: Q3 $\subseteq$ Q2 $\subseteq$ Q1.
+        La más fuerte es Q3.
+
+  \item \red{ Programa en JAVA?}
+
+  \item
+
+  \item ¿Qué conclusión pueden sacar? ¿Qué debe cumplirse con respecto a las precondiciones y postcondiviones para que sea seguro
+        \textbf{reemplazar la especificación}?
+\end{enumerate}

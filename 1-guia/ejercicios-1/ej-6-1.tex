@@ -26,7 +26,11 @@
         Para que la disyunción seguro no se indefina, necesito que el primer predicado sea \textit{verdadero} y la conjunción eso sucede si el primer predicado
         es \textit{falso}.
         $$
-          ((\ub{(c \lor y)}{c \to T.\text{ No se indefine }} \land \ob{(a \lor b)}{T}) \sii (\ob{c \lor \ub{(y \land a)}{\perp}}{\text{\red{¡necesito }}\orL \red{!}} \lor b))
+          ((\ub{(c \lor y)}{\substack{c \to \verdadero \\ \text{No se indefine}}}
+          \land
+          \ob{(a \lor b)}{\verdadero})
+          \sii
+          (\ob{c \lor \ub{(y \land a)}{\perp}}{\text{\red{¡necesito }}\orL \red{!}} \lor b))
         $$
   \item
 \end{enumerate}

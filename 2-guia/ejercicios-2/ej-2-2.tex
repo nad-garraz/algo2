@@ -1,3 +1,57 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  \begin{enumerate}[label=\alph*)]
+    \item  \texttt{pred sonCoprimos} ($x,y:\enteros$) que sea verdadero si y solo si $x$ e $y$ son coprimos.
+    \item  \texttt{pred mayorPrimoQueDivide} ($x:\enteros, y:\enteros$) que sea verdadero si $y$ es el mayor
+          primo que divide a $x$.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item
+        \predicado{sonCoprimos\red{Mal}}
+        {$x,y: \enteros$}
+        {$
+            (\paratodo n : \enteros) \biggl( \bigl( (1 < n \leq x) \land (1 < n \leq y)\bigr)
+            \entoncesL
+            \bigl( (x\mod n \distinto 0) \land (y \mod n \distinto 0 \bigr)\biggr)
+          $ }\par
+        \red {Está mal hecha. Le estoy pidiendo que no tengan divisores. Si esto fuese un procedimiento, estaría  sobre-especificando}.
+        La expresión correcta:\par
+        \predicado{sonCoprimos}{$x,y: \enteros$}
+        { $
+            (\paratodo n : \enteros)
+            \biggl(
+            \bigl(
+            1< n < \texttt{\purple{mín}}(x, y)
+            \bigr)
+            \entoncesL
+            (x \mod n = 0 \sii y \mod n \distinto 0)
+            \biggr)
+          $
+        }
+
+        \auxiliar{mín}{$a,b:\enteros$}
+        {\texttt{IfThenElseFi}($a > b,a,b$)}
+
+  \item
+        \predicado{mayorPrimoQueDivide}{$x:\enteros, y: \enteros$}
+        {
+          $
+            (\existe y : \enteros)
+            \biggl( \bigl( \texttt{esPrimo}(y) \land x \mod y = 0
+            \bigr)
+            \land
+            (\paratodo y' : \enteros)
+            \biggl(
+            \bigl( \texttt{esPrimo}(y') \land x \mod y' = 0 \bigr)
+            \entonces
+            y' \taa{\red{!}}{}\leq y
+            \biggr)
+          $
+        }
+
+\end{enumerate}
+
+\begin{aportes}
+  \item \href{\dirRepo}{Nad Garraz \github}
+\end{aportes}

@@ -1,3 +1,44 @@
+\texttt{Análisis de especificación}
 \begin{enunciado}{\ejercicio}
-\hacer
+  Las siguientes especificaciones no son correctas. Indicar por qué y
+  corregirlas para que describan correctamente el problema.
+  \begin{enumerate}[label=\alph*)]
+    \item \texttt{progresionGeometricaFactor2}: Indica si la secuencia $l$ representa una prograsión
+          geométrica factor 2. Es decir, si cada elemento de la secuencia es el doble del elemento
+          anterior.
+
+          \procedimiento{progresionGeometricaFactor2}
+          {in $l: \seq{\enteros}$}
+          {\Bool}
+          {\True}
+          {$\res = \True \sii ((\paratodo i : \enteros) \bigl(0 \leq i < |l| \entoncesL l[i] = 2 \cdot l[i-1])\bigr)$}
+
+    \item \texttt{minimo:} Devuelve en \res el menor elemento de $l$.
+
+          \procedimiento{minimo}
+          {in $l:\seq{\enteros}$}
+          {$:\enteros$}
+          {\True}
+          {$(\paratodo y : \enteros)\bigl( (y \en l \land y \distinto x) \entonces y > \res \bigr)$}
+
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item Caso borde cuando el índice es \red{i = 0}, estaría intentando acceder a \red{$l[-1]$}
+
+        \procedimiento{progresionGeometricaFactor2}
+        {in $l: \seq{\enteros}$}
+        {\Bool}
+        {\True}
+        {$\res = \True \sii ((\paratodo i : \enteros) \bigl(0 \taa{\red{!}}{}< i < |l| \entoncesL l[i] = 2 \cdot l[i-1])\bigr)$}
+
+  \item Caso borde cuando la lista tiene todos los números iguales, o un solo número. Y también
+        está esa \red{$x$} ahí medio perdida. La respuesta debe estar contenida en la lista, sino se podría poner cualquier
+                número que sea menor a todos los elementos de la lista.\par
+        \procedimiento{minimo}
+        {in $l:\seq{\enteros}$}
+        {$\enteros$}
+        {\purple{$|l| > 0$}}
+        {$\res \en l \land (\paratodo y : \enteros)\bigl( (y \en l \land y \distinto \purple{\res}) \entonces y \taa{\red{!}}{}\geq \res \bigr)$}
+\end{enumerate}

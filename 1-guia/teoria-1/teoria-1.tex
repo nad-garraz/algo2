@@ -1,0 +1,47 @@
+\begin{enumerate}[label=\tiny\faIcon{laptop-code}]
+	\item \texttt{Términos:}\par
+	      Son objetos. Devuelven un \texttt{tipo}.
+	\item \texttt{Fórmulas:}\par
+	      Denotan valores de verdad. Devuelven un \texttt{booleano}.
+
+	\item \texttt{Cuantificadores: \magenta{¡Importantes para deducir y escribir predicados!}}
+	      \begin{itemize}[label=\tiny\faIcon{laptop}]
+		      \item Cuantificador universal \texttt{generaliza la conjunción ($\land$)}:
+		            $$
+			            (\paratodo n: \enteros)(P(n))
+			            \sii
+			            (\cdots \magenta{\land} P(-N) \magenta{\land} P(-N+1) \magenta{\land} \cdots \magenta{\land} P(0) \magenta{\land} P(1)\magenta{\land} \cdots \magenta{\land} P(N)\magenta{\land} \cdots)
+		            $$
+		      \item Cuantificador existencial \texttt{generaliza la disyunción ($\lor$)}:
+		            $$
+			            (\existe n: \enteros)(P(n))
+			            \sii
+			            (\cdots \magenta{\lor} P(-N) \magenta{\lor} P(-N+1) \magenta{\lor} \cdots \magenta{\lor} P(0) \magenta{\lor} P(1)\magenta{\lor} \cdots \magenta{\lor} P(N)\magenta{\lor} \cdots)
+		            $$
+	      \end{itemize}
+	\item \texttt{Un ejemplo de predicado:}
+	      $$
+		      (\existe n : \enteros)(\ub{n = 2}{\texttt{fórmula:}P(n)})
+	      $$
+	      En \texttt{lenguaje natural} podría ser:
+	      \begin{itemize}[label=\tiny\faIcon{laptop}]
+		      \item Existe un número natural que vale 2.
+		      \item En el conjunto de los naturales por lo menos hay un elemento igual a 2.
+	      \end{itemize}
+	      Si bien es un ejemplo muy sencillo, el predicado "abierto" es aún más simple de leer:
+	      $$
+		      (\existe n: \enteros)(P(n))
+		      \sii
+		      \ob{
+			      (\cdots \magenta{\lor}
+			      \ub{P(-N)}{\texttt{falso}} \magenta{\lor}
+			      \ub{P(-N+1)}{\texttt{falso}} \magenta{\lor} \cdots \magenta{\lor}
+			      \ub{P(0)}{\texttt{falso}} \magenta{\lor}
+			      \ub{P(1)}{\texttt{falso}} \magenta{\lor}
+			      \ub{P(2)}{\verdadero} \magenta{\lor} \cdots \magenta{\lor}
+			      \ub{P(N)}{\texttt{falso}} \magenta{\lor} \cdots)
+		      }{\verdadero}
+	      $$
+	      Esto es obvio pero \underline{importante}: El resultado final de la concatenación de todas esas disyunciones tiene que ser \verdadero,
+        porque el \texttt{predicado} lo es\red{!}, y ese predicado no depende del valor de $n$. Por si no lo notaste hay un \red{$\sii$} conectando el \texttt{predicado} y las conjunciones.
+\end{enumerate}

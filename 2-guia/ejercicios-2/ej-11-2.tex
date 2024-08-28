@@ -1,3 +1,48 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Considerar las siguientes dos especificaciones, junto con un algoritmo $a$
+  que satisface la especificación de \texttt{p2}.\par
+  \procedimiento{p1}{in $x: \reales$, in $n: \enteros$}
+  {$\enteros$}
+  {$x \distinto 0$}
+  {$x^n - 1 < \res \leq x^n$}
+
+  \procedimiento{p2}{in $x: \reales$, in $n: \enteros$}
+  {$\enteros$}
+  {$n\leq 0 \entonces x \distinto 0$}
+  {$\res = \lfloor x^n \rfloor$}
+
+  \begin{enumerate}[label=\alph*)]
+    \item Dados valores de $x$ y $n$ qeu hacen verdadera la precondición de \texttt{p1}, demostrar que hacen también verdadera
+          la precondición de \texttt{p2}.
+
+    \item Ahora, dados estos valores de $x$ y $n$, supongamos que se ejecuta $a$: Llegamos a un valor de \res que hace
+          verdadera la postcondición de \texttt{p2} ¿Será también verdadera la postcondición de \texttt{p1} con este valor de \res?
+
+    \item ¿Podemos concluir que $a$ satisface la especificación de \texttt{p1}?
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item En una implicación si el \textit{consecuente} es \verdadero, no importa el valor del \textit{antecedente}, la implicación será siempre \verdadero. $n \leq0 \entonces x \distinto 0$
+        \begin{center}
+          \begin{tabular}{|c|c|c|}
+            \hline
+            $n\leq 0$ & $x\distinto 0$ & $n \leq 0 \entonces x \distinto 0$ \\\hline
+            1         & 1              & 1                                  \\
+            0         & 1              & 1                                  \\\hline
+          \end{tabular}
+        \end{center}
+
+  \item La función cumple:
+        $$
+          y \en \reales \entonces \lfloor y \rfloor \leq y
+        $$
+        Y si le resto 1 a $y$ cambia el número de la unidad así que:
+        $$
+          y - 1 \en \reales \entonces y - 1 \leq \lfloor y \rfloor
+        $$
+
+  \item Sé que el algoritmo $a$ cumple \texttt{p2}. Luego, los \texttt{requiere} son equivalentes, y \texttt{asegura2} $\taa{\red{??}}{}\subseteq$ \texttt{asegura1}. Entonces debería satisfacer,
+        porque \texttt{p1} sería una subespecificación de \texttt{p2}.\par
+        \red{RECONTRA CONTROLAR!!!}
+\end{enumerate}
